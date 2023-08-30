@@ -26,7 +26,6 @@ module "ecr" {
   repository_force_delete = true
 
   tags = {
-    Name       = ""
-    Example    = ""
+    Name       = "ecr-demo"
   }
 }

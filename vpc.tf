@@ -3,9 +3,9 @@ module "vpc" {
 
   name = "demo-vpc"
 
-  cidr            = []
-  private_subnets = []
-  public_subnets  = []
+  cidr            = ["10.70.0.0/16"]
+  private_subnets = ["10.70.1.0/24", "10.70.2.0/24", "10.70.3.0/24"]
+  public_subnets  = ["10.70.81.0/24", "10.70.82.0/24", "10.70.83.0/24"]
 
   enable_flow_log                      = true
   create_flow_log_cloudwatch_log_group = true
