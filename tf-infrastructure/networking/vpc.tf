@@ -12,18 +12,20 @@ module "vpc" {
   flow_log_max_aggregation_interval    = 60
   create_flow_log_cloudwatch_iam_role  = true
 
-  azs = local.azs
+  azs = slice(data.aws_availability_zones.available.names, 0, 3)
 
   enable_nat_gateway   = false
   enable_dns_hostnames = true
   enable_dns_support   = true
 
-  private_subnet_tags = {
-    Name = "demo-vpc-private-subnet"
+  public_subnet_tags = {
+    "kubernetes.io/cluster/${local.cluster_name_jenkins}" = "shared"
+    "kubernetes.io/role/elb"                              = 1
   }
 
-  public_subnet_tags = {
-    Name = "demo-vpc-public-subnet"
+  private_subnet_tags = {
+    "kubernetes.io/cluster/${local.cluster_name_jenkins}" = "shared"
+    "kubernetes.io/role/internal-elb"                     = 1
   }
 
   private_route_table_tags = {
@@ -35,6 +37,6 @@ module "vpc" {
   }
 
   tags = {
-    Name = "demp-vpc"
+    Name = "demo-vpc"
   }
 }
