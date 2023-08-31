@@ -1,3 +1,4 @@
+# Used by Terraform resource <resource "helm_release" "jenkins"> to get cluster details for installing helm chart
 provider "helm" {
   kubernetes {
     host                   = module.eks-cluster-jenkins.cluster_endpoint
@@ -15,6 +16,7 @@ provider "helm" {
   }
 }
 
+# Used by Terraform resource <resource "kubernetes_namespace" "jenkins"> to get cluster details for namespace creation
 provider "kubernetes" {
   host                   = module.eks-cluster-jenkins.cluster_endpoint
   cluster_ca_certificate = module.eks-cluster-jenkins.cluster_certificate_authority_data

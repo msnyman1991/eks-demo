@@ -1,3 +1,4 @@
+# Retrieves cluster details from Terraform resource <provider "helm">
 resource "helm_release" "jenkins" {
   name       = "jenkins"
   repository = "https://charts.jenkins.io"
@@ -15,6 +16,7 @@ resource "helm_release" "jenkins" {
   ]
 }
 
+# Retrieves cluster details from Terraform resource <provider "kubernetes">
 resource "kubernetes_namespace" "jenkins" {
   metadata {
     name = "jenkins"

@@ -1,3 +1,4 @@
+# Security group to allow cidr range for jenkins container 
 resource "aws_security_group" "jenkins_node_group_one" {
   name_prefix = "jenkins_node_group_one"
   vpc_id      = module.vpc.vpc_id
@@ -13,6 +14,7 @@ resource "aws_security_group" "jenkins_node_group_one" {
   }
 }
 
+# Security group to allow cidr range for loadbalancer 
 resource "aws_security_group" "jenkins_node_group_two" {
   name_prefix = "jenkins_node_group_two"
   vpc_id      = module.vpc.vpc_id
